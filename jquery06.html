@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+
+    <button type="button" id="ajax">제이쿼리 비동기</button>
+    
+    <script>
+        $("#ajax").click(function(){
+            // $.ajax({키:값, 키:값, 키:값, 키:함수, 키:함수});
+
+            $.ajax({
+                //필수 작성 옵션
+                type : "POST", //보낼타입
+                url : "http://localhost:8282/myweb/getJson", //요청경로 --- 절대경로로 작성
+                data : JSON.stringify({"bno" : "1", "writer" : "홍길동"}), //보낼데이터(생략가능)
+                // dataType : "application/json; charset=utf-8", //서버에서 전달받는 데이터타임지정(생략가능) 
+                contentType : "application/json; charset=utf-8", //보내는 데이터에 대한 타입
+                success : function(data){ //성공시 돌려받을 콜백함수
+                    console.log(data)
+                    alert("비동기 성공");
+                },
+                error : function(error){//에러시 돌려받을 콜백함수
+                    console.log(error);
+                } 
+
+                
+            });
+        })
+
+    </script>
+</body>
+</html>
