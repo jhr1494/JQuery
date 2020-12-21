@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- jquery 라이브러리 (로컬선호)-->
+    <script src="js/jquery.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+
+</head>
+<body>
+    
+    <input type="text" id="apple" value="홍길동">
+    <input type="text" class="melon" value="김길동">
+    <input type="hidden" value="이순신">
+
+    <script>
+        // var a1 = document.getElementById("apple");
+        // console.log(a1);
+
+        // var a2 = document.querySelector(".melon");
+        // console.log(a2);
+
+        // var a3 = document.querySelector("input[type='hidden']");
+        // console.log(a3);
+        
+        //제이쿼리는 $("선택자")를 통해서 요소를 얻으면, 반환으로 객체를 돌려줍니다.
+        //$("선택자")[인덱스번호]으로 태그를 얻을 수 있습니다.
+        //결론적으로 $("선택자").제이쿼리함수 를 통해서 취득할 값을 가져옵니다
+
+        var a1 = $("#apple"); //태그가 아닌 객체의 형태로 출력
+        console.log(a1);
+
+        var a2 = $("#apple")[0]; //태그형식으로 할경우 인덱스번호를 꼭 넣어준다
+        console.log(a2);
+
+        var a3 = $("#apple").val();
+        console.log(a3);
+
+        //--------------------------------------------------------------
+
+        var b1 = $(".melon").val(); //클래스가 melon인 태그의 값을 가져오는 방법
+        console.log(b1);
+
+        var c1 = $("input[type='hidden']").val();
+        console.log(c1);
+
+        //값을 변경할 때는 val(변경할 값)
+        document.getElementById("apple").value = "바꾼값 !"; //JS방식
+        $("#apple").val("바꾼값 !"); //jquery방식
+
+    </script>
+</body>
+</html>

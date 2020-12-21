@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+    
+    <ul id="test">
+        <li>태그1</li>
+        <li>태그2</li>
+        <li>태그3</li>
+    </ul>
+
+    <script>
+        //mission - li에 동일한 이벤트를 등록해라
+
+        //JS이벤트 위임(부모에 걸고 버블링을 통해 전파)
+        // var test = document.getElementById("test");
+        // test.onclick = function(){
+        //     console.log(event.target.innerHTML);
+        // }
+
+        //제이쿼리 이벤트 위임 on(이벤트종류, 어떤태그에 전파할지, 실행함수)
+        $("#test").on("click", "li", function(){
+            console.log(event.target.innerHTML);
+            // console.log($(this).html());
+        })
+
+    </script>
+
+    <div id="div">
+        <!-- 
+        <a href="teg">sasas</a>
+        <a href="teg">sasas</a>
+        <a href="teg">sasas</a> 
+        -->
+    </div>
+
+    <script>
+        //자식 태그가 비어있는 경우, 함수보다 자식태그가 늦게 생성되는 경우에
+        //on이벤트 위임을 필수로 사용합니다.
+
+        $(document).ready(function(){
+            
+            //잘못된 예 - a태그 생성전에 이벤트 위임이 될수가 없음.
+            //a태그가 존재하지 않기 때문에 동작하지 않음
+            // $("#div > a").click(function(){
+            //     event.preventDefault(); //고유이벤트 중단
+            //     alert("경고가 뜨나요?");
+            // })
+
+            //순서에 제한받지 않고 실행가능 !
+            $("div").on("click", "a", function(){
+                event.preventDefault(); //고유이벤트 중단
+                alert("경고가 뜨나요?");
+            })
+
+            //div안에 태그 생성
+            var str = "";
+            str += "<a href='teg'>sasas</a></br>";
+            str += "<a href='teg'>sasas</a></br>";
+            str += "<a href='teg'>sasas</a></br>";
+            $("#div").html(str);
+
+
+        })
+
+    </script>
+
+
+
+</body>
+</html>
